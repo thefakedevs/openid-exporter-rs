@@ -1,0 +1,21 @@
+[package]
+name = 'frida-sys'
+version = '0.17.2'
+edition = '2021'
+authors = [
+    'Keegan Saunders <keegan@undefinedbehaviour.org>',
+    'Shmarya Rubenstein <github@shmarya.net>'
+]
+license = 'wxWindows'
+repository = 'https://github.com/frida/frida-rust'
+description = 'Rust bindings for Frida with automatic Windows build setup'
+
+[features]
+auto-download = ['dep:frida-build']
+
+[build-dependencies]
+bindgen = '0.72.1'
+frida-build = { version = '0.17.2', optional = true }
+
+[target.'cfg(windows)'.build-dependencies]
+cc = '1.7'

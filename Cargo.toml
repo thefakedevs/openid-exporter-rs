@@ -1,0 +1,52 @@
+[package]
+name = 'idpocket-exporter'
+version = '0.1.0'
+edition = '2024'
+license = 'GPL-3.0-only'
+description = 'Standalone Digital ID exporter for ID Pocket'
+
+[dependencies]
+clap = { version = '4.5', features = ['derive'] }
+console = '0.16'
+indicatif = '0.18'
+dialoguer = { version = '0.12', default-features = false, features = ['password'] }
+rpassword = '7.5'
+tokio = { version = '1', features = [
+    'rt-multi-thread',
+    'macros',
+    'process',
+    'signal',
+    'time',
+    'io-util',
+    'sync'
+] }
+frida-sys = { version = '=0.17.2', features = ['auto-download'] }
+serde = { version = '1', features = ['derive'] }
+serde_json = '1'
+aes-gcm = '0.10'
+pbkdf2 = '0.12'
+sha2 = '0.10'
+base64 = '0.22'
+getrandom = '0.2'
+cesu8 = '1'
+quick-xml = '0.38'
+lzma-rust2 = '0.13'
+directories = '6'
+tempfile = '3'
+anyhow = '1'
+reqwest = { version = '0.12', default-features = false, features = ['rustls-tls', 'stream'] }
+futures-util = '0.3'
+regex = '1'
+
+[patch.crates-io]
+frida-sys = { path = 'vendor/frida-sys' }
+
+[target.'cfg(unix)'.dependencies]
+libc = '0.2'
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = '0.61', features = ['Win32_Foundation', 'Win32_System_Console'] }
+
+[profile.release]
+strip = true
+lto = 'thin'

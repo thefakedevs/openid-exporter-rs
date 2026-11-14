@@ -1,0 +1,4 @@
+frida-java-bridge 7.0.13 + upstream Android 17 fixes
+Source: https://github.com/frida/frida-java-bridge/tree/b38a5b647d3e6b72aa19bcf8eb5e41c550a0e622
+npm license declaration: LGPL-2.0 WITH WxWindows-exception-3.1
+License text: Frida-Core-COPYING (wxWindows Library Licence 3.1).

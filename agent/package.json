@@ -1,0 +1,23 @@
+{
+  "name": "idpocket-exporter-agent",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"require('fs').mkdirSync('dist',{recursive:true})\" && frida-compile src/agent.ts -o dist/agent.bundle.js -c",
+    "test": "node tests/snapshot.cjs"
+  },
+  "dependencies": {
+    "frida-java-bridge": "https://codeload.github.com/frida/frida-java-bridge/tar.gz/b38a5b647d3e6b72aa19bcf8eb5e41c550a0e622"
+  },
+  "overrides": {
+    "frida": {
+      "minimatch": "^11.0.1"
+    }
+  },
+  "devDependencies": {
+    "@types/frida-gum": "19.0.1",
+    "frida-compile": "19.0.5",
+    "prettier": "3.9.10",
+    "prettier-plugin-toml": "3.0.2"
+  }
+}

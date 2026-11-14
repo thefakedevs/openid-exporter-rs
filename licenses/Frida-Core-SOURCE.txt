@@ -1,0 +1,6 @@
+Frida Core 17.23.3, from the official Frida release devkit.
+Release: https://github.com/frida/frida/releases/tag/17.23.3
+Source: https://github.com/frida/frida-core/tree/b03488ac72c309fc93d555f5f71aa213e4de463f
+Frida Gum source: https://github.com/frida/frida-gum/tree/1208a1266e9d28e6c958b6a167b6d944ebefaf47
+Release submodule revisions: https://github.com/frida/frida/tree/17.23.3/subprojects
+License: wxWindows Library Licence 3.1; see Frida-Core-COPYING and Frida-Core-COPYING.LIB.

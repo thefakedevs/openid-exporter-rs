@@ -1,0 +1,82 @@
+name: Build and verify standalone binaries
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            artifact: windows-x86_64
+          - os: ubuntu-22.04
+            artifact: linux-x86_64
+          - os: macos-15-intel
+            artifact: macos-x86_64
+          - os: macos-15
+            artifact: macos-aarch64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.97.1
+          components: rustfmt, clippy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Linux native dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libclang-dev clang liblzma-dev
+      - name: Rebuild embedded Java bridge and test agent
+        working-directory: agent
+        run: |
+          npm ci
+          npm run build
+          npm test
+      - name: Check source formatting
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python scripts/format.py --check
+      - name: Rust checks
+        run: |
+          cargo clippy --locked --all-targets -- -D warnings
+          cargo test --locked
+      - name: Cargo run with a conflicting embedded libclang
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $env:LIBCLANG_PATH = "$env:TEMP/missing-esp-clang/bin/libclang.dll"
+          Remove-Item Env:BINDGEN_EXTRA_CLANG_ARGS,Env:INCLUDE -ErrorAction SilentlyContinue
+          cargo run --locked -- --version
+      - name: Independent crypto compatibility
+        run: |
+          python -m pip install cryptography==46.0.3
+          python tests/python_interop.py
+      - name: Release build
+        run: cargo build --locked --release
+      - name: Inspect native dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: ldd target/release/idpocket-exporter
+      - name: Inspect native dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: otool -L target/release/idpocket-exporter
+      - name: Smoke test
+        shell: bash
+        run: |
+          ./target/release/idpocket-exporter --version
+          ./target/release/idpocket-exporter --help
+          python tests/cli_smoke.py
+      - name: Package binary and license notices
+        run: python scripts/package.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: idpocket-exporter-${{ matrix.artifact }}
+          path: |
+            dist/*.zip
+            dist/*.zip.sha256
+          if-no-files-found: error

@@ -1,0 +1,36 @@
+# Build output and developer tools
+/target/
+/agent/node_modules/
+/dist/
+/.venv/
+/.ruff_cache/
+__pycache__/
+*.py[cod]
+
+# Exports and local credentials; test fixtures remain tracked
+/exports/
+/private/
+did-import*.txt
+*.private
+*.private.*
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+
+# Local editor settings and temporary files
+.idea/
+.vscode/
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini

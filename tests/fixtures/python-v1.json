@@ -1,0 +1,16 @@
+{
+  "account": {
+    "schema": 1,
+    "accountId": 42,
+    "did": {
+      "creationTimestamp": "12345",
+      "pinSalt": "synthetic-salt"
+    },
+    "max": {
+      "accessToken": "synthetic-token",
+      "deviceId": "synthetic-device"
+    }
+  },
+  "password": "synthetic-password-123",
+  "uri": "didpocket://import/v1#eyJ2IjoxLCJrZGYiOiJQQktERjItSE1BQy1TSEEyNTYiLCJpdGVyYXRpb25zIjozMTAwMDAsInNhbHQiOiJFUkVSRVJFUkVSRVJFUkVSRVJFUkVRIiwiaXYiOiJJaUlpSWlJaUlpSWlJaUlpIiwiY2lwaGVydGV4dCI6Ilp6c0dpM0xKQ2dOZXBrckQ3M2d4Um84MnFnRWNoLWtIUElsSmpKX09TVmU2dU9hRF81alI0aER2ZzFqU0VNdTZ0eld4S3BjRTVfeXdnblFVOE5OaUxaWVBHcm9qa0xhR0lNd2tIbkFvamtHU056NWpnM0QydHJrYzJwS044MFFDSUxFRUczOEt3Y2pmdl9URnBuOXBwZTJKbW8xcnV0Qjlvb25tR2dMWF9QN09jMGJmcnA0dFRDZlNIa3hwM0djY0NCMUl5eHBIME9MZ3ZoNzVXTmdpZ0hhU0lqRTNwTm5FNGl2YlpRQWVkUXM3ZENxaFprWTA2bllrZGYwZ2tWeUxTekJEdmlwMG53In0"
+}

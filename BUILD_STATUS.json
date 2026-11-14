@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-14",
+  "scope": "Local Windows x86_64 validation snapshot; not a certification of future builds",
+  "version": "0.1.0",
+  "rust": "1.97.1",
+  "fridaCoreAndServer": "17.23.3",
+  "javaBridge": {
+    "version": "7.0.13",
+    "commit": "b38a5b647d3e6b72aa19bcf8eb5e41c550a0e622"
+  },
+  "rustTestsPassed": 11,
+  "androidTestsIgnored": 2,
+  "ciExecuted": false,
+  "macosBuildTested": false,
+  "linuxBuildTested": false,
+  "actualAndroidExportTested": false,
+  "actualIdPocketImportTested": false,
+  "windowsX86_64ReleaseBuilt": true,
+  "windowsDependencies": "Windows system DLLs and API-set contracts only; static CRT",
+  "javaScriptMockTestsPassed": 13,
+  "releaseCliSmokeScenariosPassed": 8,
+  "pythonToRustImportV1": true,
+  "rustToPythonImportV1": true,
+  "formattingChecksPassed": true,
+  "clippyWarnings": 0,
+  "npmAuditVulnerabilities": 0
+}

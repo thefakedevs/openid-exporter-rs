@@ -1,0 +1,28 @@
+* text=auto eol=lf
+
+*.rs text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.h text eol=lf
+Cargo.lock text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+
+*.exe binary
+*.dll binary
+*.zip binary
+*.xz binary
+
+# Preserve upstream formatting and keep generated sources out of GitHub language stats.
+vendor/** linguist-vendored
+vendor/frida-sys/include/frida-core.h -whitespace
+agent/dist/agent.bundle.js linguist-generated
